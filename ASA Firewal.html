@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASA Firewall</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+        <div>
+            <div class="div-b" >
+                <h1>ASA Firewall</h1>
+                <span>The ASA in Cisco ASA stands for Adaptive Security Appliance.
+                    In brief, Cisco ASA is a security device that combines firewall, antivirus, intrusion prevention, and virtual private network (VPN) capabilities. It provides proactive threat defense that stops attacks before they spread through the network.</span>
+            
+            <span><b>Beyond being a firewall, the Cisco ASA can do the following and more:</b></span>
+            <ul >
+                <li>Antivirus</li>
+                <li>Antispan</li>
+                <li>IDS/IPS Engine</li>
+                <li>VPN Device</li>
+                <li>SSL Device</li>
+                <li>Content Inspection</li>
+            </ul>
+        </div>
+            <img class="ii" src="https://miro.medium.com/max/875/1*MwtLcu6AAwkaeViuOiKn7w.png" alt="">
+        </div>
+
+            <div class="div-b" >
+                <h2>CONFIGURATION OF FIREWALL :</h2>
+                <span><b>STEP 1: REMOVE DEFAULT IP ADDRESS AND DHCP SCOPE RANGE</b></span> <br>
+                <em>ciscoasa(config)# interface vlan 1 <br>
+                    ciscoasa(config-if)# np ip address <br>
+                    ciscoasa(config-if)# exit <br>
+                    ciscoasa(config)# np dhcpd address 192.168.1.5 - 192.168.1.15 inside</em> <br>
+                <span>(We can find this using SHOW command)</span> <br> 
+                <span><b>STEP 2:  ASSIGN IP, NAME AND SECURITY LEVEL TO VLAN 1&2</b></span> <br>
+                <em>ciscoasa(config)# interfa ce vlan 1 <br>
+                    ciscoasa(config-if)# ip address 172.16.1.1 255.255.255.0 <br>
+                    ciscoasa(config-if)# no shutdown <br>
+                    ciscoasa(config-if)# nameif inside <br>
+                    ciscoasa(config-if)# security-level 100 <br>
+                    ciscoasa(config-if)# exit 
+                </em>    
+                <br><br>
+                <em>
+                    ciscoasa(config)# interface vlan 2 <br>
+                    ciscoasa(config-if)# ip address 210.2.2.2 255.255.255.0 <br>
+                    ciscoasa(config-if)# no shutdown <br>   
+                    ciscoasa(config-if)# nameif outside <br>
+                    ciscoasa(config-if)# security-level 0 <br>
+                    ciscoasa(config-if)# exit
+                </em> <br>
+                <span><b>STEP 3: LINK CORRESPONDING VLAN 1&2 WITH RESPECTIVE INTERFACE </b></span> <br>
+                <em>ciscoasa(config)# interface ethernet0/1 <br>
+                    ciscoasa(config-if)# switchport access vlan 1 <br>
+                    ciscoasa(config-if)# exit <br>
+                    ciscoasa(config)# interface ethernet0/0 <br>
+                    ciscoasa(config-if)# switchport access vlan 2 <br>
+                    ciscoasa(config-if)# exit</em>   <br>
+                <span><b>STEP 4: CONFIGURE DHCP & DNS SERVER</b> </span> 
+                <p>(We can give DHCP range as much as we want, here we give 6 ip’s starting from 1.5 to 1.10)</p>
+                <i>ciscoasa(config)# dchpd address 172.16.1.5 - 172.16.10 inside</i> <br>
+                <span>NOTE: Above command allows all computer from inside network to communicate with DNS server.</span>
+                <br> 
+                <span><b>STEP 5: CONFIGURE DEFAULT ROUTE</b></span> <br>
+                <p>(The command will let the firewall communicate with the outside network.) 
+                    </p> 
+                    <span>NOTE: 0.0.0.0 means any source IP can communicate with any destination IP through router IP 210.2.2.1</span>
+                <br><i>cisocasa(config)# route outside 0.0.0.0 0.0.0.0 210.2.2.1
+                </i> <br> <br>
+                <span><b>STEP 6: OBJECT NETWORK CREATION & ENABLING NAT</b></span>
+                <br>
+                <span>(This will allow INSIDE network to communicate with OUTSIDE network (& vice-versa) with public IP address.</span>
+                <br>
+                <em>ciscoasa(config)# object network LAN <br>
+                    ciscoasa(config-network-object)# subnet 172.16.1.0 255.255.255.0 <br>
+                    ciscoasa(config-network-object)# nat (inside,outside) dynamic interface</em>
+                <br>    
+                    <span><b>STEP 7: CREATE ACL</b></span>
+                <br>
+                <p>NOTE: Here we are using EXTENDED NAMED ACL( i.e 3rd type of ACL apart from previous two where we use alphabets instead of numbers)
+                <br> This ACL allows both TCP and ICMP traffic to be allowed outside the network.</p>
+                <em>cisco(config)# access-list inside_to_internet extended permit tcp any any <br>
+                    cisco(config)# access-list inside_to_internet extended permit icmp any any <br>
+                    cisco(config)#access-group inside_to_internet in interface outside <br>
+                    </em>        <br>
+                <span><b>STEP 8: CONFIGURE ROUTER</b></span><br>
+                <span>ASSIGN IP ADDRESS TO ROUTER <br>
+                    Configure OSPF for ISP Router</span> <br>
+                <em>router(config)# router ospf 1 <br>
+                    router(config)# network 210.2.2.0 0.0.0.255 area 0 <br>
+                    router(config)# network 210.2.20.20 0.0.0.255 area 0 <br>
+                    router(config)# exit</em>    <br> <br>
+                <span><b>STEP 9: Go to PC > DHCP</b></span> <br>
+                </div>   
+
+</body>
+</html>

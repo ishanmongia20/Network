@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public and private</title>
+   
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div>
+        <div class="div-b">
+        <h1> Public and Private Ip
+        </h1>
+    
+        </div  >
+        <div class="div-c">
+            <span>Public IP → Used outside the LAN , assigned by ISP and we can view it but can’t edit it.</span>
+            <span>Private IP → Used within LAN , assigned by user/admin and we can view and edit it easily.</span>
+        </div>
+        <div class="div-b">
+            <h2>NAT (Network Address Translation)
+            </h2>
+            <p>->Is the process of converting Public IP into Private IP and vice-versa<br>
+                ->Conversion happens in background. We don’t do this. <br>
+                ->Router is responsible for this.
+                
+            </p>
+           
+            <h2>Is IP Address unique?   </h2>
+            <span> If public then YES, It’s Unique everywhere;  <br>
+                If private then It’s Unique within LAN only, outside LAN it loses its uniqueness.</span>
+        </div>
+    </div>
+    <div class="div-c" >
+        <h1>ROUTER</h1> 
+        <span>Router is used to find the best possible path..</span> <br>
+        <h2>Concepts:</h2>
+        <em>
+            1.Router Ports  <br>
+            2. <i>Router Rules</i> <br>
+            3. <i>Router Modes </i> <br>
+            4. <i>Router basic Configuration</i>
+        </em>
+        <div class="div-b"> 
+            <h2>Router Ports On the basis of functionality </h2>
+            <span>1. Interface Port <br> 2. Line Port </span>
+            <p> <h3>Interface Port  </h3>
+                Used to connect the router with another devices (switch, router, pc). <br> <br>
+
+                <b>TYPES:</b> <br>
+                a). Ethernet Interface > Old and slow <br>  
+                b). Fast ethernet Interface > New & fast  > connect router to switch <br>
+                c). Gigabitethernet Interface > Advance <br>
+                d). Serial Interface > Router to router <br>
+
+            </p>
+            <p> <h3>Line Port </h3>
+                Used to configure the router <br><br>
+
+                <b>Types : </b> <br>
+                a). Console Port > direct configuration <br>
+
+                b). Auxiliary Port > remotely configuration
+                </p>
+
+                <h2> Router Rules.</h2>
+                <p>
+                    Rule 1: All interfaces of a router should be in different network or should have different NID. <br>
+                    
+                    Rule 2: A serial interface connecting two router should be in same network or should have same NID.
+                    </p>
+                
+                <img class="ii" src="https://miro.medium.com/max/875/1*Z6n6t_I_OPoqbmuZRqAuzg.png" alt="rouet">   
+                <h2>Router Modes </h2>
+                <span>1. User Mode <br>
+                    2. Privilege Mode <br>
+                    3. Global Configuration Mode
+                    </span>
+                    <h2> Commands For CLI :</h2>
+                    <p>Router> ENABLE or EN (User Mode) <br>
+                        Router# CONF T (Privelege Mode) <br>
+                        Router(Config)#  INTERFACE GIGABITETHERNET0/0 <br>
+                        Router(Config-if)# IP ADDRESS 192.168.1.1 255.255.255.0 <br>
+                        Router(Config-if)# NO SHUTDOWN <br>
+                        No shutdown is used to make router live/on.</p>
+            </div>
+
+    </div>
+</body>

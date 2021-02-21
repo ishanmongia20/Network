@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+html{
+    font-family: 'Nunito', sans-serif;
+    
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: rgb(238, 230, 230);
+}
+header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    
+
+}
+header h1{
+    
+    font-size: 45px;
+    font-weight: bolder;
+    margin-top: 50px;
+}
+   
+.section-a{
+    display: block;
+    text-align: left;
+    align-items: center;
+    
+}
+.section-a h2{
+    margin-left:30px ;
+}
+.section-a img{
+    
+    height: 350px;
+    width: 350px;
+    margin: 30px;
+    border: 5px solid black ;
+    
+}
+.section-a span{
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+.section-a p{
+    font-size: 20px;
+    font-weight: normal;
+    margin: 30px;
+}
+
+.section-b{
+    display: block;
+    text-align: left;
+    align-items: center;
+    padding: 30px;
+}
+
+.section-b span{
+    font-size: 20px;
+ 
+
+}
+.section-c {
+        display: block;
+        text-align: left;
+        align-items: center;
+        padding-left: 30px;
+    }
+.section-c span{
+    font-size: 20px;
+    
+}
+.section-c img{
+    display: block;
+    margin-top: 20px;
+    height: 450px;
+    width: 450px;
+    border: 5px solid black;
+}

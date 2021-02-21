@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="div-b">
+    <h1>Switch</h1>
+        <span>To connect many pcs into your LAN</span>
+        <span>If am not using router then am building LAN without internet just using switch and PCs.</span>
+        <div class="div-b"><h2>SWITCHING</h2>
+        <p> 1. Switch Ports <br>
+            2. Switch Rules <br>
+            3. Switch Modes <br>
+            4. Switch Configuration <br> 
+            </p>
+            <h3>Switch Ports:</h3>
+            <span>1. Access Port (switch to pc ) <br>
+                2. Trunk Port (switch to switch) <br>
+                
+                Switch Rules: ( * Not compulsion rules, but basic thing for practical work)</span>
+                <h3>Switch - Router</h3>
+                <span>a). It’s recommended to connect to 1st port i.e 0/1.</span>
+                <h3>Switch - Switch </h3>
+                <span>a).Last port to first port
+                </span>
+                <h3>Switch Modes: (Similar to router modes)</h3>
+                <span>1. User Mode <br>
+                    2. Privilege Mode <br>
+                    3. Global Configuration Mode <br>
+                    ** Switch has memory which stores MAC addresses.</span>
+            <img class="ii" src="https://miro.medium.com/max/776/1*4a_chSURejZVnFsa7w-h-Q.png" alt="switchmm">
+                <h3>Switch Configuration:</h3>
+                <span> <b>CLI :</b> <br>
+                    
+                    SWITCH>EN <br>
+                    SWITCH#CONFT <br>
+
+                    SWITCH(CONFIG)# INTERFACE FASTETHERNET0/2 <br>
+                    SWITCH(CONFIG)# SWITCHPORT MODE ACCESS <br>
+                    SWITCH(CONFIG)#EXIT <br>
+                    VLAN : Full form is Virtual LAN. A VLAN is a group of devices on one or more LANs that are 
+                    configured to communicate as if they were attached to the same wire, when in fact they are 
+                    located on a number of different LAN segments. 
+                    Because VLANs are based on logical instead of physical connections, they are extremely flexible.</span>
+        </div>
+                    <h3>SUBNETTING: grouping </h3>
+                    <p> <b>Disadvantages : </b>
+                        1. Time consuming -  If the number of PCs gets increased then it will create issues. <br>
+                        2. Increase of workload. <br>
+                        
+                        VLAN Configuration Steps: <br>
+                        1. Create VLAN Number (0-65535) <br>
+                        2. Create VLAN Name (SALES , HR) <br>
+                        3. Choose an interface of switch <br>
+                        4. Configure interface (ACCESS / TRUNK). <br>
+                        5. Link interface with VLAN.
+                    </p>
+                    <div>
+                        <h2>TO DO: </h2>
+                        <span>
+                        0/2 and 0/3 - SALES VLAN 10 <br>
+                        0/4 and 0/5 - HR VLAN 20
+                    </span>
+                        <b>STEP 1: </b>
+                        <p><br>
+                        SWITCH>EN <br>
+                        SWITCH#CONFT <br>
+                        SWITCH(CONFIG)#VLAN 10 <br>
+                        SWITCH(CONFIG-VLAN)#NAME SALES <br>
+                        SWITCH(CONFIG-VLAN)#EXIT <br> <br>
+                        <b>STEP 2: </b> <br> 
+                        SWITCH(CONFIG)# INTERFACE FASTETHERNET0/2 <br> <br>
+                        <b>STEP 3: </b> <br> 
+                        SWITCH(CONFIG-IF)# SWITCHPORT MODE ACCESS <br> <br>
+                        <b>STEP 4: </b> <br> 
+                        SWITCH(CONFIG-IF)# SWITCHPORT ACCESS VLAN 10 <br>
+                        If you need to add one more interface go to step2. <br>
+                        ** EXIT <br> <br>
+                        If u need to check whether u have added interfaces successfully or not, go with command > show vlan. 
+                    
+                    </p>
+                    <img class="ii" src="https://miro.medium.com/max/714/1*THntTkOHjYbJSKrpgjWVDg.png" alt="">
+                    </div>
+    </div>
+
+</body>
+</html>

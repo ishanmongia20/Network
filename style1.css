@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+html{
+    font-family: 'Nunito', sans-serif;
+    
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: rgb(243, 242, 242);
+}
+
+div{
+     
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding:  20px;
+
+}
+.div-b p{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: ;
+}
+.div-b h2{
+    margin-top: 20px;
+    padding: 10px;
+}
+.div-b h4{
+    padding: 5px;
+}
+.div-b h3{
+    padding: 5px;
+}
+.div-b span{
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.div-c span{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+.div-d p{
+    font-size: 20px;
+    padding: 10px;
+}
+.div-d img{
+    height: 500px;
+    width: 700px;
+    padding: 10px;
+    margin-bottom: 40px;
+    border: 2px solid black;
+    
+}
+.div-d span{
+
+    font-size: 20px;
+    padding: 10px;
+}
+.div-d ul{
+    font-size: 20px;
+    margin-left: 20px;
+}
+.ii{
+    height: 500px;
+    width: 700px;
+    padding: 10px;
+    margin-bottom: 40px;
+    border: 2px solid black;
+    
+}
+
+@media screen and (max-width: 720px){
+    .div-d img{
+        height: auto;
+        width: auto;
+    } 
+    .ii{
+        height: auto;
+        width: auto;
+    }
+}
